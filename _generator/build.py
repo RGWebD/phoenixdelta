@@ -29,14 +29,17 @@ for _ in range(90):
     s.ellipse((x-r,y-r,x+r,y+r),fill=c+(random.randint(120,255),))
 sp=Image.alpha_composite(sp.filter(ImageFilter.GaussianBlur(3)),sp)
 og=og.convert('RGBA'); og.alpha_composite(sp)
-em=Image.open(BR/'pd-emblem-cutout.png').convert('RGBA'); em=em.resize((560,round(em.height*560/em.width)),Image.LANCZOS); og.alpha_composite(em,(620,120))
+em=Image.open(BR/'pd-emblem-cutout.png').convert('RGBA'); em=em.resize((500,round(em.height*500/em.width)),Image.LANCZOS); og.alpha_composite(em,(675,150))
 lg=Image.open(BR/'png/stacked-dark-1000.png').convert('RGBA')
 wm=Image.open(BR/'png/horizontal-dark-1400.png').convert('RGBA'); bb=wm.getbbox(); wm=wm.crop(bb)
-# wordmark only = right part of horizontal lockup (after emblem); detect by taking right 58%
-wcrop=wm.crop((int(wm.width*.36),0,wm.width,wm.height)); wcrop=wcrop.crop(wcrop.getbbox()); wcrop=wcrop.resize((560,round(wcrop.height*560/wcrop.width)),Image.LANCZOS)
+# wordmark only = the part of the horizontal lockup right of the transparent gap after the emblem
+import numpy as np
+al=np.array(wm.split()[3]); cols=(al>8).sum(0); x0=int(wm.width*.2)
+gap=next(x for x in range(x0,wm.width) if cols[x]==0); start=next(x for x in range(gap,wm.width) if cols[x]>0)
+wcrop=wm.crop((start,0,wm.width,wm.height)); wcrop=wcrop.crop(wcrop.getbbox()); wcrop=wcrop.resize((540,round(wcrop.height*540/wcrop.width)),Image.LANCZOS)
 og.alpha_composite(wcrop,(60,190)); og=og.convert('RGB'); d=ImageDraw.Draw(og)
 try:
-    fnt=ImageFont.truetype('/usr/share/fonts/truetype/sand-box/google/Jost/Jost-VariableFont_wght.ttf',30); fnt.set_variation_by_axes([500])
+    fnt=ImageFont.truetype('/usr/share/fonts/truetype/sand-box/google/Jost/Jost-VariableFont_wght.ttf',27); fnt.set_variation_by_axes([500])
     d.text((62,215+wcrop.height),'Home installation & repair, many trades',font=fnt,fill=(255,248,240)); d.text((62,258+wcrop.height),f'Jacksonville, FL & surrounding areas · {PHONE}',font=fnt,fill=(246,181,68))
 except Exception as ex: print('og font',ex)
 og.save(A/'og-image.jpg',quality=86)
