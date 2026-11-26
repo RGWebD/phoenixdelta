@@ -80,7 +80,7 @@ def footer():
 AREA_LD=[{"@type":"City","name":"Jacksonville","containedInPlace":{"@type":"State","name":"Florida"}}]+[{"@type":"AdministrativeArea","name":f"{c} County, FL"} for c in COUNTIES]
 def biz():
     return {"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","@id":BASE+"#business","name":NAME,"slogan":TAGLINE,
-      "description":"Phoenix Delta LLC is a home installation and repair company serving Jacksonville, Florida and the surrounding areas: painting, plastering, caulking, interior remodeling (non-licensed work), cabinetry, handyman services, flooring, decorative stone, tile, marble, granite and terrazzo installation, stuccoing, pressure washing, driveway and tennis court installation, and canvas awning and ornamental iron installation.",
+      "description":"Phoenix Delta LLC is a home installation and repair company serving Jacksonville, Florida and the surrounding areas: painting, plastering, caulking, interior remodeling, handyman services, flooring, decorative stone and tile installation, pressure washing, and canvas awning and ornamental iron installation.",
       "url":BASE,"telephone":"+1-904-562-9356","logo":BASE+"assets/favicon-512.png","image":[BASE+"assets/og-image.jpg",BASE+"assets/horizontal-dark-1400.png"],
       "address":{"@type":"PostalAddress","addressLocality":"Jacksonville","addressRegion":"FL","addressCountry":"US"},
       "areaServed":AREA_LD,"knowsAbout":[t for _,t,_,_ in ALL],
@@ -127,7 +127,7 @@ home=f'''<div class="rise" aria-hidden="true"><div class="stage"><div class="glo
 <section class="hero"><canvas class="embers" aria-hidden="true"></canvas><div class="flames" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
 <div class="wrap"><div><p class="kicker" data-h="1"><i></i>Jacksonville &amp; surrounding areas</p>
 <h1 data-h="2"><span class="l">One call.</span><span class="l fire-t">Many jobs.</span></h1>
-<p class="lead" data-h="3">{NAME} handles home installation and repair across {len(ALL)} trades, from painting, flooring and cabinetry to stucco, tile and stone, pressure washing, driveways, awnings and ornamental iron.</p>
+<p class="lead" data-h="3">{NAME} handles home installation and repair across {len(ALL)} trades, from painting, plastering and flooring to tile and stone, pressure washing, awnings and ornamental iron.</p>
 <div class="ctas" data-h="4">{btn_call('xl')}{btn_est('ghost xl')}</div>
 <ul class="chips" data-h="5"><li>{I["flame"]}Brand-new company</li><li>{I["house"]}Installation &amp; repair</li><li>{I["compass"]}Duval · Clay · St. Johns · Nassau</li></ul></div>
 {orbit}</div></section>
@@ -144,7 +144,7 @@ jump=''.join(f'<a href="#{g["id"]}">{I[g["ic"]]}{g["t"]}</a>' for g in GROUPS)
 grps=''
 for k,g in enumerate(GROUPS):
     arts=''.join(f'<article id="{i}-svc"><span class="si">{I[i]}</span><div><h3>{t}</h3><p>{dd}</p></div></article>' for i,t,dd in g["items"])
-    note=f'<div class="note">{I["info"] if "info" in I else I["flame"]}<span>Interior remodeling covers non-licensed work only. Work that requires a state-licensed trade isn’t part of this service.</span></div>' if g["id"]=="remodel" else ''
+    note=''
     grps+=f'''<section class="grp" id="{g["id"]}"><div class="side"><div class="big-ic">{I[g["ic"]]}</div><span class="gn">0{k+1} / 0{len(GROUPS)}</span><p class="label">{g["k"]}</p><h2 class="split-h">{g["t"]}</h2><p class="muted">{g["s"]}</p><a class="btn sm mag" href="contact.html#estimate" style="margin-top:8px">{I["msg"]}<span class="lbl">Ask about this</span></a></div>
 <div><div class="svc stagger">{arts}</div>{note}{slots(g["id"],cls="")}</div></section>'''
 services=f'''{phero("Installation &amp; repair","Every service, one call","{len(ALL)} home services from one company, serving Jacksonville and the surrounding areas. Not sure if your job fits? Call and ask.".replace("{len(ALL)}",str(len(ALL))),"Services","SERVICES")}
@@ -155,7 +155,7 @@ services=f'''{phero("Installation &amp; repair","Every service, one call","{len(
 # ---------- ABOUT ----------
 about=f'''{phero("About Phoenix Delta","A new local company, built to rise","Phoenix Delta LLC is a new home installation and repair company serving Jacksonville and the surrounding areas.","About","ABOUT")}
 <section class="sec"><div class="wrap story"><div data-r="left"><p class="kicker"><i></i>Our story</p><h2 class="split-h">One company for the whole to-do list</h2>
-<p>Most homes need more than one kind of work: a room to paint, a floor to replace, a driveway to pour, a railing to install, a wall that needs patching. Usually that means calling a different company for every job.</p>
+<p>Most homes need more than one kind of work: a room to paint, a floor to replace, a patio to pressure wash, a railing to install, a wall that needs patching. Usually that means calling a different company for every job.</p>
 <p>The idea behind Phoenix Delta is simple. It’s a new company that brings a wide range of installation and repair trades under one name and one phone number, so homeowners in the Jacksonville area can make one call and get many jobs handled.</p>
 <p>Because the company is brand new, there’s no long list of past projects here yet. As the work gets done, real photos of it will fill this site.</p></div>
 <img class="badge" data-r="right" src="assets/img/badge-400.webp" width="400" height="400" alt="Phoenix Delta LLC badge" loading="lazy"></div></section>
@@ -189,10 +189,10 @@ contact=f'''{phero("Contact","Let’s get it on the schedule","Call, or send an 
 
 nf=f'''<section class="phero" style="min-height:80vh;display:flex;align-items:center"><canvas class="embers" aria-hidden="true"></canvas><div class="gword" aria-hidden="true">404</div><div class="wrap"><p class="kicker"><i></i>Page not found</p><h1>This page went up in smoke</h1><p class="lead">The page you’re looking for isn’t here. Head back home or give us a call.</p><div class="ctas" style="margin-top:28px"><a class="btn mag" href="/{REPO}/">{I["house"]}<span class="lbl">Back to home</span></a><a class="btn mag ghost" href="{TEL}">{I["phone"]}<span class="lbl">Call {PHONE}</span></a></div></div></section>'''
 
-D_HOME=f"{NAME}: home installation and repair in Jacksonville, FL and surrounding areas. Painting, flooring, cabinetry, tile and stone, stucco, pressure washing, driveways, awnings, ornamental iron and more. Call {PHONE}."
+D_HOME=f"{NAME}: home installation and repair in Jacksonville, FL and surrounding areas. Painting, plastering, flooring, tile and stone, pressure washing, awnings, ornamental iron and more. Call {PHONE}."
 PAGES=[
  ('index.html',f'{NAME} | Home Installation & Repair, Jacksonville FL',D_HOME,home,[biz()]),
- ('services.html',f'Services | {NAME}, Jacksonville FL',f'All {len(ALL)} home installation and repair services from {NAME}: painting, plastering, caulking, interior remodeling (non-licensed), cabinetry, handyman, flooring, decorative stone and tile, stucco, pressure washing, driveways, tennis courts, canvas awnings and ornamental iron.',services,[biz(),crumbs_ld('Services','services.html'),faq_ld(FAQ)]),
+ ('services.html',f'Services | {NAME}, Jacksonville FL',f'All {len(ALL)} home installation and repair services from {NAME}: painting, plastering, caulking, interior remodeling, handyman, flooring, decorative stone and tile, pressure washing, canvas awnings and ornamental iron.',services,[biz(),crumbs_ld('Services','services.html'),faq_ld(FAQ)]),
  ('about.html',f'About | {NAME}',f'{NAME} is a new local home installation and repair company serving Jacksonville, FL and the surrounding areas.',about,[biz(),crumbs_ld('About','about.html')]),
  ('service-area.html',f'Service Area: Jacksonville & Surrounding Areas | {NAME}',f'{NAME} serves Jacksonville, FL and the surrounding areas, including Duval, Clay, St. Johns and Nassau counties. Call {PHONE}.',svcarea,[biz(),crumbs_ld('Service Area','service-area.html'),faq_ld(AREA_FAQ)]),
  ('contact.html',f'Contact & Estimates | {NAME}',f'Call {PHONE} or send an estimate request to {NAME}, serving Jacksonville, FL and surrounding areas.',contact,[biz(),crumbs_ld('Contact','contact.html'),faq_ld(FAQ)]),
@@ -213,7 +213,6 @@ svc_lines='\n'.join(f'- {g["t"]}: '+'; '.join(t for _,t,_ in g["items"]) for g i
 - Business type: home installation and repair, multi-service (HomeAndConstructionBusiness)
 - Service area: Jacksonville, FL and surrounding areas, including {", ".join(COUNTIES[:-1])} and {COUNTIES[-1]} counties. Service-area business, no public storefront address.
 - Phone: {PHONE} (estimate requests can be sent by text from the Contact page)
-- Interior remodeling is non-licensed work only; work requiring a state-licensed trade is not offered.
 - The company is new: no reviews, ratings, prices, hours or email are published yet.
 
 ## Services
@@ -221,7 +220,7 @@ svc_lines='\n'.join(f'- {g["t"]}: '+'; '.join(t for _,t,_ in g["items"]) for g i
 
 ## Pages
 - [Home]({BASE}): overview, service groups, how it works, service area
-- [Services]({BASE}services.html): all {len(ALL)} services in six groups, with FAQ
+- [Services]({BASE}services.html): all {len(ALL)} services in {len(GROUPS)} groups, with FAQ
 - [About]({BASE}about.html): the company and its name
 - [Service Area]({BASE}service-area.html): Jacksonville and surrounding counties
 - [Contact]({BASE}contact.html): phone and estimate request form

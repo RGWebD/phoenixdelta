@@ -137,7 +137,7 @@ p{margin:0 0 1em}
 .orn::after{transform:scaleX(-1)}
 .orn i{width:8px;height:8px;transform:rotate(45deg);border:1px solid var(--gold)}
 /* group cards */
-.groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.groups{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
 .gcard{--rx:0deg;--ry:0deg;position:relative;display:flex;flex-direction:column;padding:30px 28px 26px;border-radius:var(--r);background:linear-gradient(160deg,rgba(27,53,103,.55),rgba(14,31,66,.6) 50%,rgba(7,18,40,.8));border:1px solid var(--line);text-decoration:none;overflow:hidden;isolation:isolate;transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));transition:transform .5s var(--ease),border-color .4s,box-shadow .4s;min-width:0}
 .gcard::after{content:"";position:absolute;left:-10%;right:-10%;bottom:-60%;height:90%;z-index:-1;background:radial-gradient(50% 60% at 50% 100%,rgba(240,138,44,.55),rgba(194,65,12,.25) 50%,transparent 75%);transform:translateY(40%);opacity:0;transition:transform .7s var(--ease),opacity .5s}
 .gcard:hover{border-color:var(--line2);box-shadow:0 30px 60px -30px rgba(240,138,44,.45)}
@@ -356,3 +356,4 @@ form .row>*{min-width:0}
  .ticker ul{animation:none}
  .rise{display:none}
 }
+@media (max-width:1180px) and (min-width:641px){.groups{grid-template-columns:1fr 1fr}}

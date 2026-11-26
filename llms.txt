@@ -6,20 +6,17 @@
 - Business type: home installation and repair, multi-service (HomeAndConstructionBusiness)
 - Service area: Jacksonville, FL and surrounding areas, including Duval, Clay, St. Johns and Nassau counties. Service-area business, no public storefront address.
 - Phone: 904-562-9356 (estimate requests can be sent by text from the Contact page)
-- Interior remodeling is non-licensed work only; work requiring a state-licensed trade is not offered.
 - The company is new: no reviews, ratings, prices, hours or email are published yet.
 
 ## Services
 - Interior finishes: Painting; Plastering; Caulking
-- Interior remodeling: Interior remodeling; Cabinetry; Handyman services
+- Remodeling & handyman: Interior remodeling; Handyman services
 - Floors, tile & stone: Flooring; Decorative stone & tile
-- Exterior surfaces: Stuccoing; Pressure washing
-- Driveways & courts: Driveway installation; Tennis court installation
-- Awnings & ornamental iron: Canvas awnings; Ornamental iron
+- Exterior & outdoor: Pressure washing; Canvas awnings; Ornamental iron
 
 ## Pages
 - [Home](https://rgwebd.github.io/phoenixdelta/): overview, service groups, how it works, service area
-- [Services](https://rgwebd.github.io/phoenixdelta/services.html): all 14 services in six groups, with FAQ
+- [Services](https://rgwebd.github.io/phoenixdelta/services.html): all 10 services in 4 groups, with FAQ
 - [About](https://rgwebd.github.io/phoenixdelta/about.html): the company and its name
 - [Service Area](https://rgwebd.github.io/phoenixdelta/service-area.html): Jacksonville and surrounding counties
 - [Contact](https://rgwebd.github.io/phoenixdelta/contact.html): phone and estimate request form
